@@ -39,6 +39,15 @@ function doubleMoney() {
   updateDOM();
 }
 
+// Sort users by riches
+// using b.money, as these are objects and want to compare money objects
+// remember sort does an in place sort
+function sortByRichest() {
+  data.sort((a, b) => b.money - a.money);
+
+  updateDOM();
+}
+
 //Add new object to data array
 function addData(obj) {
   data.push(obj);
@@ -68,3 +77,4 @@ function formatMoney(number) {
 //Event Listners
 addUserBtn.addEventListener('click', getRandomUser);
 doubleBtn.addEventListener('click', doubleMoney);
+sortBtn.addEventListener('click', sortByRichest);
