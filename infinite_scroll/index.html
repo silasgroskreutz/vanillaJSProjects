@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Infinite Scroller</title>
+  </head>
+  <body>
+    <h1>My Blog</h1>
+
+    <div class="filter-container">
+      <input
+        type="text"
+        class="filter"
+        id="filter"
+        placeholder="Filter posts..."
+      />
+    </div>
+
+    <div id="post-container">
+      <div class="post">
+        <div class="number">1</div>
+        <h2 class="post-title">Post One</h2>
+        <p class="post-body">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis
+          dignissimos qui atque minima necessitatibus, dicta sapiente a eveniet.
+          Excepturi, ea in molestiae perferendis culpa hic sint natus quam
+          temporibus amet!
+        </p>
+      </div>
+      <div class="post">
+        <div class="number">2</div>
+        <h2 class="post-title">Post Two</h2>
+        <p class="post-body">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis
+          dignissimos qui atque minima necessitatibus, dicta sapiente a eveniet.
+          Excepturi, ea in molestiae perferendis culpa hic sint natus quam
+          temporibus amet!
+        </p>
+      </div>
+    </div>
+
+    <div class="loader">
+      <div class="circle"></div>
+      <div class="circle"></div>
+      <div class="circle"></div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
