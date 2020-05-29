@@ -35,7 +35,7 @@ for (let i = 0; i < brickRowCount; i++) {
   bricks[i] = [];
   for (let j = 0; j < brickColumnCount; j++) {
     const x = i * (brickInfo.w + brickInfo.padding) + brickInfo.offsetX;
-    const y = j * (brickInfo.height + brickInfo.padding) + brickInfo.offsetY;
+    const y = j * (brickInfo.h + brickInfo.padding) + brickInfo.offsetY;
     bricks[i][j] = { x, y, ...brickInfo };
   }
 }
@@ -59,7 +59,7 @@ function drawBall() {
   ctx.closePath();
 }
 
-// drw paddle on canvas
+// draw paddle on canvas
 function drawPaddle() {
   ctx.beginPath();
   ctx.rect(paddle.x, paddle.y, paddle.w, paddle.h);
@@ -101,7 +101,7 @@ function movePaddle() {
   }
 }
 
-// Move
+// Move ball on canvas
 function moveBall() {
   ball.x += ball.dx;
   ball.y += ball.dy;
@@ -143,8 +143,31 @@ function moveBall() {
       }
     });
   });
+
+  // Hit bottom wall - Lose
+  if (ball.y + ball.size > canvas.height) {
+    showAllBricks();
+    score = 0;
+  }
 }
 
+// Increase score
+function increaseScore() {
+  score++;
+
+  if (score % (brickRowCount * brickRowCount) === 0) {
+    showAllBricks();
+  }
+}
+
+// Make all bricks appear
+function showAllBricks() {
+  bricks.forEach((column) => {
+    column.forEach((brick) => (brick.visible = true));
+  });
+}
+
+// Draw everything
 function draw() {
   //clear canvas
   ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -176,7 +199,7 @@ function keyDown(e) {
   }
 }
 
-// Keydown event
+// Keyup event
 function keyUp(e) {
   if (
     e.key === 'Right' ||
